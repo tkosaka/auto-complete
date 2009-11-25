@@ -381,8 +381,9 @@ You can not use it in source definition like (prefix . `NAME')."
              (real
               (add-attribute 'prefix real))
              ((null prefix)
-              (add-attribute 'prefix 'ac-prefix-default)
-              (add-attribute 'requires 1))))
+              (add-attribute 'prefix 'ac-prefix-default))))
+          ;; requires
+          (add-attribute 'requires (or (cdr (assoc 'requires source)) 1))
           ;; match
           (let ((match (assq 'match source)))
             (cond
